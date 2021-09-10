@@ -92,7 +92,7 @@ def webhook():
     side = data['strategy']['order_action'].upper()
     tick = data['ticker']
     quantity = data['strategy']['order_contracts']
-    formatQuantity = format(quantity, '.6')
+    formatQuantity = format(quantity, '.5')
     print(formatQuantity)
     order_response = order(side, formatQuantity, 'BTCUSDT')
     # order_response = order(
