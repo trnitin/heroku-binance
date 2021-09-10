@@ -93,7 +93,7 @@ def webhook():
     tick = data['ticker']
     quantity = data['strategy']['order_contracts']
     # formatQuantity = format(quantity, '.5')
-    print(formatQuantity)
+    # print(formatQuantity)
     # if(data['strategy']['order_id'] == "short" or data['strategy']['order_id'] == "exit short" ):
     formatQuantity = '0.002'
 
