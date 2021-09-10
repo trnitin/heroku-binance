@@ -94,6 +94,9 @@ def webhook():
     quantity = data['strategy']['order_contracts']
     formatQuantity = format(quantity, '.5')
     print(formatQuantity)
+    if(side == "SELL"):
+        formatQuantity = '0.002'
+
     order_response = order(side, formatQuantity, 'BTCUSDT')
     # order_response = order(
     #     symbol=tick,
