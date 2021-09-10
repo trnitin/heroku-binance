@@ -1,20 +1,21 @@
 # import sys
-import ctypes
+# import ctypes
 from binance.enums import *
 from binance.client import Client
 import json
 import config
 # import win32api
 # import time
+# import math
 from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 
-def is_admin():
-    try:
-        return ctypes.windll.shell32.IsUserAnAdmin()
-    except:
-        return False
+# def is_admin():
+#     try:
+#         return ctypes.windll.shell32.IsUserAnAdmin()
+#     except:
+#         return False
 
 
 client = Client(config.API_KEY, config.API_SECRET)
@@ -35,7 +36,7 @@ client = Client(config.API_KEY, config.API_SECRET)
 #         None, "runas", sys.executable, __file__, None, 1)
 
 
-print(config.API_KEY)
+# print(config.API_KEY)
 #  tld='us'
 
 
@@ -83,16 +84,17 @@ def webhook():
             "code": "error",
             "message": "Invalid passphrase"
         }
-    print(data['ticker'])
-    print(data['bar'])
+    # print(data['ticker'])
+    # print(data['bar'])
 
-    info = client.get_symbol_info('BTCUSDT_210924PERP')
-    print(info)
+    # info = client.get_symbol_info('BTCUSDT_210924PERP')
+    # print(info)
     side = data['strategy']['order_action'].upper()
-    quantity = float(round(data['strategy']['order_contracts'], 6))
     tick = data['ticker']
-    print(quantity)
-    order_response = order(side, quantity, 'BTCUSDT')
+    quantity = data['strategy']['order_contracts']
+    formatQuantity = format(quantity, '.6')
+    print(formatQuantity)
+    order_response = order(side, formatQuantity, 'BTCUSDT')
     # order_response = order(
     #     symbol=tick,
     #     type='MARKET',
@@ -105,12 +107,12 @@ def webhook():
     # btc_price = client.get_symbol_ticker(symbol="BTCUSDT")
     # # print full output (dictionary)
     # print(btc_price)
-    if order_response:
-        return {
-            "code": "success",
-        }
-    else:
-        print("order failed")
+    # if order_response:
+    #     return {
+    #         "code": "success",
+    #     }
+    # else:
+    #     print("order failed")
 
     return{
         "code": "error",
