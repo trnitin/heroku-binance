@@ -89,10 +89,10 @@ def webhook():
     info = client.get_symbol_info('BTCUSDT_210924PERP')
     print(info)
     side = data['strategy']['order_action'].upper()
-    quantity = data['strategy']['order_contracts']
+    quantity = quantity = float(round(data['strategy']['order_contracts'], 6))
     tick = data['ticker']
-    print(tick)
-    order_response = order(side, quantity, tick)
+    print(quantity)
+    order_response = order(side, quantity, 'BTCUSDT')
     # order_response = order(
     #     symbol=tick,
     #     type='MARKET',
