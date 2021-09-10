@@ -1,11 +1,11 @@
-import sys
+# import sys
 import ctypes
 from binance.enums import *
 from binance.client import Client
 import json
 import config
-import win32api
-import time
+# import win32api
+# import time
 from flask import Flask, request, jsonify
 app = Flask(__name__)
 
@@ -18,21 +18,21 @@ def is_admin():
 
 
 client = Client(config.API_KEY, config.API_SECRET)
-gt = client.get_server_time()
-aa = str(gt)
-bb = aa.replace("{'serverTime': ", "")
-aa = bb.replace("}", "")
-gg = int(aa)
-ff = gg-19798879
-uu = ff/1000
-yy = int(uu)
-tt = time.localtime(yy)
-if is_admin():
-    win32api.SetSystemTime(tt[0], tt[1], 0, tt[2], tt[3], tt[4], tt[5], 0)
-else:
-    # Re-run the program with admin rights
-    ctypes.windll.shell32.ShellExecuteW(
-        None, "runas", sys.executable, __file__, None, 1)
+# gt = client.get_server_time()
+# aa = str(gt)
+# bb = aa.replace("{'serverTime': ", "")
+# aa = bb.replace("}", "")
+# gg = int(aa)
+# ff = gg-19798879
+# uu = ff/1000
+# yy = int(uu)
+# tt = time.localtime(yy)
+# if is_admin():
+#     win32api.SetSystemTime(tt[0], tt[1], 0, tt[2], tt[3], tt[4], tt[5], 0)
+# else:
+#     # Re-run the program with admin rights
+#     ctypes.windll.shell32.ShellExecuteW(
+#         None, "runas", sys.executable, __file__, None, 1)
 
 
 print(config.API_KEY)
