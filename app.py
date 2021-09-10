@@ -42,7 +42,7 @@ print(config.API_KEY)
 def order(side, quantity, symbol, order_type=ORDER_TYPE_MARKET):
     try:
         print("sending order")
-        order = client.create_order(
+        order = client.futures_create_order(
             symbol=symbol, side=side, type=order_type, quantity=quantity)
         print(order)
     except Exception as e:
@@ -92,8 +92,16 @@ def webhook():
     quantity = data['strategy']['order_contracts']
     tick = data['ticker']
     print(tick)
-    order_response = order(side, quantity, tick)
+    # order_response = order(side, quantity, tick)
+    order_response = order(
+        symbol=tick,
+        type='MARKET',
+        timeInForce='GTC',
+        side=side,
+        quantity=quantity
+    )
     print(side)
+    print(order_response)
     # btc_price = client.get_symbol_ticker(symbol="BTCUSDT")
     # # print full output (dictionary)
     # print(btc_price)
