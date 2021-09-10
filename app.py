@@ -92,14 +92,14 @@ def webhook():
     quantity = data['strategy']['order_contracts']
     tick = data['ticker']
     print(tick)
-    # order_response = order(side, quantity, tick)
-    order_response = order(
-        symbol=tick,
-        type='MARKET',
-        timeInForce='GTC',
-        side=side,
-        quantity=quantity
-    )
+    order_response = order(side, quantity, tick)
+    # order_response = order(
+    #     symbol=tick,
+    #     type='MARKET',
+    #     timeInForce='GTC',
+    #     side=side,
+    #     quantity=quantity
+    # )
     print(side)
     print(order_response)
     # btc_price = client.get_symbol_ticker(symbol="BTCUSDT")
