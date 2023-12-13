@@ -18,7 +18,7 @@ app = Flask(__name__)
 #         return False
 
 
-# client = Client(config.API_KEY, config.API_SECRET)
+client = Client(config.API_KEY, config.API_SECRET)
 # gt = client.get_server_time()
 # aa = str(gt)
 # bb = aa.replace("{'serverTime': ", "")
