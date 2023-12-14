@@ -10,6 +10,8 @@ import config
 from flask import Flask, request, jsonify
 app = Flask(__name__)
 
+# if __name__ == "__main__":
+#         app.run(host='0.0.0.0', port=80)   
 
 # def is_admin():
 #     try:
@@ -118,3 +120,7 @@ def webhook():
         "code": "error",
         "message": "order"
        }   
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0',port=80)
